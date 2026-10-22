@@ -42,9 +42,32 @@ where not exists (select 1 from projects);
 
 insert into skills (name, category)
 select * from (values
-  ('Python', 'Data Science'), ('TensorFlow', 'Machine Learning'), ('Pandas', 'Data Analysis'),
-  ('React', 'Frontend'), ('Node.js', 'Backend'), ('PostgreSQL', 'Database'),
-  ('Git & GitHub', 'Tools'), ('Docker', 'Tools'), ('VS Code', 'Tools')
+  ('JavaScript', 'Languages'),
+  ('C', 'Languages'),
+  ('C++', 'Languages'),
+  ('Python', 'Languages'),
+  ('Java', 'Languages'),
+  ('C#', 'Languages'),
+  ('HTML5', 'Languages'),
+  ('CSS3', 'Languages'),
+  ('React', 'Frontend'),
+  ('Next.js', 'Frontend'),
+  ('Angular', 'Frontend'),
+  ('Flutter', 'Frontend'),
+  ('Node.js', 'Backend'),
+  ('Django', 'Backend'),
+  ('Flask', 'Backend'),
+  ('PostgreSQL', 'Database'),
+  ('MySQL', 'Database'),
+  ('MongoDB', 'Database'),
+  ('scikit-learn', 'ML & Research'),
+  ('TensorFlow', 'ML & Research'),
+  ('PyTorch', 'ML & Research'),
+  ('Git/GitHub', 'Tools'),
+  ('VS Code', 'Tools'),
+  ('npm', 'Tools'),
+  ('Postman', 'Tools'),
+  ('Vercel/Netlify', 'Tools')
 ) as seed(name, category)
 where not exists (select 1 from skills);
 

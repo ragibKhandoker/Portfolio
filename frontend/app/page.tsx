@@ -2,7 +2,11 @@
 
 import { useEffect, useState, type FormEvent } from 'react';
 import Lenis from 'lenis';
-import { ArrowRight, BookOpen, Briefcase, Download, Github, Linkedin, Mail, MapPin, Menu, Moon, Send, Sun, X } from 'lucide-react';
+import type { IconType } from 'react-icons';
+import { FaJava } from 'react-icons/fa';
+import { SiAngular, SiC, SiCplusplus, SiCss3, SiDjango, SiFlask, SiFlutter, SiGit, SiHtml5, SiJavascript, SiMongodb, SiMysql, SiNextdotjs, SiNodedotjs, SiNpm, SiPostgresql, SiPostman, SiPython, SiPytorch, SiReact, SiScikitlearn, SiTensorflow, SiVercel } from 'react-icons/si';
+import { TbBrain, TbBrandCSharp, TbBrandVscode, TbCode, TbDatabase, TbLayout, TbServer, TbTool } from 'react-icons/tb';
+import { ArrowRight, Download, Github, GraduationCap, Linkedin, Mail, MapPin, Menu, Moon, Rocket, Send, Sun, X } from 'lucide-react';
 
 type Project = { id: number; title: string; description: string; technologies: string[]; project_url?: string; github_url?: string };
 type Skill = { id: number; name: string; category: string };
@@ -15,10 +19,12 @@ const initialProjects: Project[] = [
   { id: 4, title: 'Personal Portfolio', description: 'A responsive portfolio with a premium dark interface.', technologies: ['Next.js', 'TypeScript', 'CSS'] }
 ];
 const initialSkills: Skill[] = [
-  { id: 1, name: 'Python', category: 'Data Science' }, { id: 2, name: 'TensorFlow', category: 'Machine Learning' },
-  { id: 3, name: 'Pandas', category: 'Data Analysis' }, { id: 4, name: 'React', category: 'Frontend' },
-  { id: 5, name: 'Node.js', category: 'Backend' }, { id: 6, name: 'PostgreSQL', category: 'Database' },
-  { id: 7, name: 'Git & GitHub', category: 'Tools' }, { id: 8, name: 'Docker', category: 'Tools' }, { id: 9, name: 'VS Code', category: 'Tools' }
+  { id: 1, name: 'JavaScript', category: 'Languages' }, { id: 2, name: 'C', category: 'Languages' }, { id: 3, name: 'C++', category: 'Languages' }, { id: 4, name: 'Python', category: 'Languages' }, { id: 5, name: 'Java', category: 'Languages' }, { id: 6, name: 'C#', category: 'Languages' }, { id: 7, name: 'HTML5', category: 'Languages' }, { id: 8, name: 'CSS3', category: 'Languages' },
+  { id: 9, name: 'React', category: 'Frontend' }, { id: 10, name: 'Next.js', category: 'Frontend' }, { id: 11, name: 'Angular', category: 'Frontend' }, { id: 12, name: 'Flutter', category: 'Frontend' },
+  { id: 13, name: 'Node.js', category: 'Backend' }, { id: 14, name: 'Django', category: 'Backend' }, { id: 15, name: 'Flask', category: 'Backend' },
+  { id: 16, name: 'PostgreSQL', category: 'Database' }, { id: 17, name: 'MySQL', category: 'Database' }, { id: 18, name: 'MongoDB', category: 'Database' },
+  { id: 19, name: 'scikit-learn', category: 'ML & Research' }, { id: 20, name: 'TensorFlow', category: 'ML & Research' }, { id: 21, name: 'PyTorch', category: 'ML & Research' },
+  { id: 22, name: 'Git/GitHub', category: 'Tools' }, { id: 23, name: 'VS Code', category: 'Tools' }, { id: 24, name: 'npm', category: 'Tools' }, { id: 25, name: 'Postman', category: 'Tools' }, { id: 26, name: 'Vercel/Netlify', category: 'Tools' }
 ];
 
 // Typed one after another in the hero; untyped text stays as invisible placeholder so the layout doesn't jump
@@ -83,6 +89,45 @@ function TechBackdrop({ variant }: { variant: string }) {
   </div>;
 }
 
+// About section: education timeline, most recent first
+const education: { level: string; school: string; period?: string }[] = [
+  { level: 'Bachelor of Science in Computer Science (B.Sc. CS)', school: 'BRAC University', period: 'Expected Dec 2026' },
+  { level: 'Higher Secondary Certificate (HSC)', school: 'Cantonment Public School and College, Saidpur' },
+  { level: 'Secondary School Certificate (SSC)', school: 'Adarsha High School, Birampur' }
+];
+
+// About section: an editor window showing a small Python class describing me, with hand-rolled syntax colours
+const str = (v: string) => <span className="tk-str">&quot;{v}&quot;</span>;
+const list = (items: string[]) => <>[{items.map((v, i) => <span key={v}>{i > 0 && ', '}{str(v)}</span>)}]</>;
+const self = <span className="tk-self">self</span>;
+const field = (name: string, value: React.ReactNode) => <div className="ind2">{self}.{name} = {value}</div>;
+
+function AboutCode() {
+  return <div className="code-float"><div className="code-card">
+    <div className="code-head"><span className="dot red"/><span className="dot yellow"/><span className="dot green"/><span className="code-file">about_me.py</span></div>
+    <pre className="code-body"><code>
+      <div><span className="tk-kw">class</span> <span className="tk-cls">Developer</span>:</div>
+      <div className="ind1"><span className="tk-kw">def</span> <span className="tk-fn">__init__</span>({self}):</div>
+      {field('name', str('Khandoker Md. Ragib Ahsan'))}
+      {field('role', str('Data Scientist & ML Engineer'))}
+      {field('education', str('B.Sc. CS @ BRAC University'))}
+      {field('location', str('Bangladesh'))}
+      {field('languages', list(['Python', 'JavaScript', 'SQL']))}
+      {field('ml_stack', list(['TensorFlow', 'Pandas']))}
+      {field('web_stack', list(['React', 'Node.js', 'PostgreSQL']))}
+      {field('tools', list(['Git', 'Docker', 'VS Code']))}
+      <div className="blank"/>
+      <div className="ind1"><span className="tk-kw">def</span> <span className="tk-fn">build</span>({self}, <span className="tk-param">idea</span>):</div>
+      <div className="ind2"><span className="tk-kw">return</span> <span className="tk-str">f&quot;Turning {'{'}<span className="tk-param">idea</span>{'}'} into real solutions&quot;</span></div>
+      <div className="blank"/>
+      <div className="tk-cmt"># Let&apos;s connect and build something great!</div>
+      <div>me = <span className="tk-cls">Developer</span>()</div>
+      <div><span className="tk-fn">print</span>(me.<span className="tk-fn">build</span>({str('data-driven products')}))<i className="caret code-caret"/></div>
+    </code></pre>
+    <div className="code-badge"><Rocket size={18}/> Open to Opportunities</div>
+  </div></div>;
+}
+
 // Kept in its own component so the typing ticks re-render only this text, not the whole page (keeps scrolling smooth)
 function HeroIntro() {
   const [anim, setAnim] = useState({ cycle: 0, typed: 0 });
@@ -121,6 +166,19 @@ function HeroIntro() {
   </>;
 }
 
+// Skills: category order and heading icons, plus a brand icon (and brand colour) per technology.
+// Brands whose logo is black/white use the text colour so they stay visible in both themes.
+const skillCategories: [string, IconType][] = [['Languages', TbCode], ['Frontend', TbLayout], ['Backend', TbServer], ['Database', TbDatabase], ['ML & Research', TbBrain], ['Tools', TbTool]];
+const skillIcons: Record<string, [IconType, string?]> = {
+  JavaScript: [SiJavascript, '#f7df1e'], C: [SiC, '#5c6bc0'], 'C++': [SiCplusplus, '#00599c'], Python: [SiPython, '#3776ab'], Java: [FaJava, '#f89820'],
+  'C#': [TbBrandCSharp, '#9b4f96'], HTML5: [SiHtml5, '#e34f26'], CSS3: [SiCss3, '#1572b6'],
+  React: [SiReact, '#61dafb'], 'Next.js': [SiNextdotjs], Angular: [SiAngular, '#dd0031'], Flutter: [SiFlutter, '#54c5f8'],
+  'Node.js': [SiNodedotjs, '#5fa04e'], Django: [SiDjango, '#44b78b'], Flask: [SiFlask],
+  PostgreSQL: [SiPostgresql, '#4169e1'], MySQL: [SiMysql, '#00758f'], MongoDB: [SiMongodb, '#47a248'],
+  'scikit-learn': [SiScikitlearn, '#f7931e'], TensorFlow: [SiTensorflow, '#ff6f00'], PyTorch: [SiPytorch, '#ee4c2c'],
+  'Git/GitHub': [SiGit, '#f05032'], 'VS Code': [TbBrandVscode, '#007acc'], npm: [SiNpm, '#cb3837'], Postman: [SiPostman, '#ff6c37'], 'Vercel/Netlify': [SiVercel]
+};
+
 const sections = [['Home', 'home'], ['About', 'about'], ['Skills', 'skills'], ['Projects', 'projects'], ['Contact', 'contact']];
 
 // Header + side dots. Own component so the active-section highlight re-renders only the navigation, not the page
@@ -155,9 +213,9 @@ function Navigation() {
       <a className="brand" href="#home"><span className="brand-mark">RA</span>Portfolio</a>
       <nav className={menuOpen ? 'nav nav-open' : 'nav'}>{sections.map(([label, id]) => <a key={id} href={`#${id}`} className={active === id ? 'active' : ''} onClick={() => setMenuOpen(false)}>{label}</a>)}</nav>
       <div className="topbar-actions">
-        <button className="theme-toggle" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} title={theme === 'dark' ? 'Light mode' : 'Dark mode'}>{theme === 'dark' ? <Sun size={17}/> : <Moon size={17}/>}</button>
+        <button suppressHydrationWarning className="theme-toggle" onClick={toggleTheme} aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'} title={theme === 'dark' ? 'Light mode' : 'Dark mode'}>{theme === 'dark' ? <Sun size={17}/> : <Moon size={17}/>}</button>
         <a className="button button-small" href="/resume.pdf" download aria-label="Download Resume"><span className="resume-label">Download Resume</span> <Download size={14}/></a>
-        <button className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">{menuOpen ? <X/> : <Menu/>}</button>
+        <button suppressHydrationWarning className="mobile-toggle" onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">{menuOpen ? <X/> : <Menu/>}</button>
       </div>
     </header>
 
@@ -211,7 +269,7 @@ export default function Home() {
   // and a section reached from a nav link as the scroll arrives. Everything resets once fully off screen.
   useEffect(() => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const revealSelector = '.hero-description, .hero-buttons, .hero-copy > .socials, .hero-art, .kicker, .page:not(.hero) h2, .lead, .page:not(.hero) .muted-text, .stats, .highlights > div, .quote-card, .skill-group, .project-card, .section-heading .text-link, .contact-line, .contact-grid .socials, .contact-form';
+    const revealSelector = '.hero-description, .hero-buttons, .hero-copy > .socials, .hero-art, .kicker, .page:not(.hero) h2, .lead, .page:not(.hero) .muted-text, .info-card, .code-card, .skill-group, .project-card, .section-heading .text-link, .contact-line, .contact-grid .socials, .contact-form';
     const reveal = (els: HTMLElement[], fromBelow: boolean) => els.filter(el => !el.classList.contains('in')).forEach((el, i) => {
       el.style.setProperty('--reveal-from', fromBelow ? '60px' : '-60px');
       el.style.setProperty('--reveal-delay', `${Math.min(i, 8) * 0.08}s`);
@@ -268,9 +326,10 @@ export default function Home() {
     } finally { setSending(false); }
   }
 
-  const skillGroups = Object.entries(skills.reduce<Record<string, Skill[]>>((groups, s) => {
-    (groups[s.category] ||= []).push(s); return groups;
-  }, {}));
+  const grouped = skills.reduce<Record<string, Skill[]>>((groups, s) => { (groups[s.category] ||= []).push(s); return groups; }, {});
+  // Known categories first in a fixed order, anything new from the database after them
+  const skillGroups = [...skillCategories.map(([c]) => c), ...Object.keys(grouped).filter(c => !skillCategories.some(([k]) => k === c))]
+    .filter(c => grouped[c]).map(c => [c, grouped[c]] as const);
 
   return <main>
     <Navigation/>
@@ -294,15 +353,16 @@ export default function Home() {
         <div>
           <p className="kicker">01 / ABOUT ME</p>
           <h2>A little bit about me</h2>
-          <p className="lead">I'm a Computer Science and Engineering student at BRAC University. I enjoy exploring data, building intelligent systems, and creating user-friendly web applications that solve real-world problems.</p>
-          <p className="muted-text">My work sits where data meets software: cleaning and analysing datasets, training and evaluating models, and shipping them inside fast, accessible web apps that people actually use.</p>
-          <div className="stats"><div><strong>2.42</strong><small>CGPA</small></div><div><strong>1+</strong><small>Years Learning</small></div><div><strong>10+</strong><small>Projects & Labs</small></div></div>
-          <div className="highlights">
-            <div><BookOpen size={18}/><strong>Curious learner</strong><small>Always exploring new tools and ideas</small></div>
-            <div><Briefcase size={18}/><strong>Builder</strong><small>From notebook prototypes to deployed apps</small></div>
+          <div className="about-text">
+            <p className="lead">I&apos;m a <mark>Computer Science</mark> student at <mark>BRAC University</mark>. I enjoy exploring <mark>data</mark>, building <mark>intelligent systems</mark>, and creating user-friendly <mark>web applications</mark> that solve real-world problems.</p>
+            <p className="muted-text">My work covers the whole journey of a data product: collecting and cleaning data, finding patterns through analysis and visualisation, training and evaluating machine-learning models, and then putting them in people&apos;s hands through fast, responsive web apps built with React, Next.js and Node.js. I love learning new tools, writing clean and maintainable code, and working with teams to turn ideas into products that make a real difference.</p>
+          </div>
+          <div className="info-card">
+            <h3><GraduationCap size={16}/>Education</h3>
+            <ol className="edu-list">{education.map(({ level, school, period }) => <li key={level}><div className="edu-top"><strong>{level}</strong>{period && <em>{period}</em>}</div><span>{school}</span></li>)}</ol>
           </div>
         </div>
-        <div className="quote-card"><div className="desk-art">⌘　♧　◉</div><p>Better Code.<br/>Better Tomorrow.</p></div>
+        <AboutCode/>
       </div>
     </section>
 
@@ -310,10 +370,16 @@ export default function Home() {
       <TechBackdrop variant="skills"/>
       <div className="section-wrap">
         <div className="page-heading"><p className="kicker">02 / MY SKILLS</p><h2>Technologies I work with</h2><p className="muted-text">A toolkit spanning data science, machine learning and full-stack development.</p></div>
-        <div className="skill-groups">{skillGroups.map(([category, items]) => <div className="skill-group" key={category}>
-          <h3>{category}</h3>
-          <div className="skill-list">{items.map(s => <div className="skill-card" key={s.id}><span>{s.name.slice(0, 1)}</span><strong>{s.name}</strong></div>)}</div>
-        </div>)}</div>
+        <div className="skill-groups">{skillGroups.map(([category, items]) => {
+          const CategoryIcon = skillCategories.find(([c]) => c === category)?.[1] ?? TbCode;
+          return <div className="skill-group" key={category}>
+            <h3><CategoryIcon size={18}/>{category}</h3>
+            <div className="skill-list">{items.map(s => {
+              const [Icon, color] = skillIcons[s.name] ?? [];
+              return <span className="skill-chip" key={s.id}>{Icon ? <Icon size={18} style={color ? { color } : undefined}/> : <b>{s.name.slice(0, 1)}</b>}{s.name}</span>;
+            })}</div>
+          </div>;
+        })}</div>
       </div>
     </section>
 
@@ -335,7 +401,7 @@ export default function Home() {
           <div className="contact-line"><MapPin size={18}/><span><small>Location</small>Bangladesh</span></div>
           <div className="socials"><a href="https://github.com/" aria-label="GitHub" target="_blank" rel="noreferrer"><Github/></a><a href="https://linkedin.com/" aria-label="LinkedIn" target="_blank" rel="noreferrer"><Linkedin/></a></div>
         </div>
-        <form className="contact-form" onSubmit={submitContact}><div className="form-row"><input placeholder="Your name" aria-label="Your name" minLength={2} maxLength={100} required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}/><input type="email" placeholder="Email address" aria-label="Email address" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}/></div><input placeholder="Subject (optional)" aria-label="Subject" value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })}/><textarea placeholder="Your message..." aria-label="Your message" minLength={10} maxLength={5000} required rows={7} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}/><button className="button" disabled={sending}>{sending ? 'Sending…' : 'Send Message'} <Send size={14}/></button>{status && <small role="status" className="status">{status}</small>}</form>
+        <form className="contact-form" onSubmit={submitContact}><div className="form-row"><input suppressHydrationWarning placeholder="Your name" aria-label="Your name" minLength={2} maxLength={100} required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}/><input suppressHydrationWarning type="email" placeholder="Email address" aria-label="Email address" required value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}/></div><input suppressHydrationWarning placeholder="Subject (optional)" aria-label="Subject" value={form.subject} onChange={e => setForm({ ...form, subject: e.target.value })}/><textarea suppressHydrationWarning placeholder="Your message..." aria-label="Your message" minLength={10} maxLength={5000} required rows={7} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}/><button suppressHydrationWarning className="button" disabled={sending}>{sending ? 'Sending…' : 'Send Message'} <Send size={14}/></button>{status && <small role="status" className="status">{status}</small>}</form>
       </div>
       <footer className="footer section-wrap"><a className="brand" href="#home"><span className="brand-mark">RA</span>Ragib Ahsan</a><span>Designed with intention. Built with curiosity.</span><a className="text-link" href="#home">Back to top ↑</a></footer>
     </section>

@@ -1,0 +1,6 @@
+[
+  { "id": 1, "title": "Breast Cancer Detection (ML)", "description": "A comparative study of machine-learning models with a web-based implementation.", "technologies": ["Python", "TensorFlow", "React"], "project_url": null, "github_url": null },
+  { "id": 2, "title": "ShareMeal", "description": "A food donation and distribution platform designed to connect communities.", "technologies": ["React", "Node.js", "PostgreSQL"], "project_url": null, "github_url": null },
+  { "id": 3, "title": "Data Analysis Dashboard", "description": "Exploratory data analysis and visualization of real-world datasets.", "technologies": ["Python", "Pandas", "Matplotlib"], "project_url": null, "github_url": null },
+  { "id": 4, "title": "Personal Portfolio", "description": "A responsive portfolio with a premium dark interface.", "technologies": ["Next.js", "TypeScript", "Express"], "project_url": null, "github_url": null }
+]

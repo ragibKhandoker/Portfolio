@@ -1,0 +1,11 @@
+[
+  { "id": 1, "name": "Python", "category": "Data Science" },
+  { "id": 2, "name": "TensorFlow", "category": "Machine Learning" },
+  { "id": 3, "name": "Pandas", "category": "Data Analysis" },
+  { "id": 4, "name": "React", "category": "Frontend" },
+  { "id": 5, "name": "Node.js", "category": "Backend" },
+  { "id": 6, "name": "PostgreSQL", "category": "Database" },
+  { "id": 7, "name": "Git & GitHub", "category": "Tools" },
+  { "id": 8, "name": "Docker", "category": "Tools" },
+  { "id": 9, "name": "VS Code", "category": "Tools" }
+]
